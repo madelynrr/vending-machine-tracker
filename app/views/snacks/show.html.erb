@@ -5,7 +5,7 @@
 <% @snack.machines.each do |machine| %>
   <section id = "machine-<%= machine.id %>">
     <%= machine.location %>
-    <p>Average Price: <%= machine.average_price %></p>
+    <p>Average Price: <%= machine.average_price.round(2) %></p>
     <p>Count of Snack Types: <%= machine.snacks.length %></p>
   </section>
 <% end %>
