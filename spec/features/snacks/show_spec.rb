@@ -51,7 +51,7 @@ RSpec.describe "as a user" do
     visit snack_path(snickers)
 
     within "#machine-#{dons.id}" do
-      expect(page).to have_content("Average Price: 1.5")
+      expect(page).to have_content("Average Price: $1.50")
     end
   end
 
