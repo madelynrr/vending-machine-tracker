@@ -40,4 +40,32 @@ RSpec.describe "as a user" do
     expect(page).to have_content(mikes.location)
     expect(page).not_to have_content(dons.location)
   end
+
+  it "displays average price for the vending machine" do
+    owner = Owner.create(name: "Sam's Snacks")
+    dons  = owner.machines.create(location: "Don's Mixed Drinks")
+    snickers = Snack.create(name: "Snickers", price: 1)
+    bbq = Snack.create(name: "BBQ Potato Chips", price: 2)
+    dons.snacks << [snickers, bbq]
+
+    visit snack_path(snickers)
+
+    within "#machine-#{dons.id}" do
+      expect(page).to have_content("Average Price: 1.5")
+    end
+  end
+
+  it "displays count of snacks in each vending machine" do
+    owner = Owner.create(name: "Sam's Snacks")
+    dons  = owner.machines.create(location: "Don's Mixed Drinks")
+    snickers = Snack.create(name: "Snickers", price: 1)
+    bbq = Snack.create(name: "BBQ Potato Chips", price: 2)
+    dons.snacks << [snickers, bbq]
+
+    visit snack_path(snickers)
+
+    within "#machine-#{dons.id}" do
+      expect(page).to have_content("Count of Snack Types: 2")
+    end
+  end
 end
