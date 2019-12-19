@@ -32,5 +32,6 @@ RSpec.describe "as a user" do
     visit machine_path(dons)
 
     expect(page).to have_content("Average Price: 1.33")
+    expect(page).not_to have_content("Average Price: 1.333")
   end
 end
