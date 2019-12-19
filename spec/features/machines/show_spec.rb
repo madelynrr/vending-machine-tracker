@@ -8,9 +8,13 @@ RSpec.describe "as a user" do
     snickers = Snack.create(name: "Snickers", price: 1)
     bbq = Snack.create(name: "BBQ Potato Chips", price: 2)
 
-    visit machine_path
+    dons.snacks << [snickers, bbq]
 
-    expect
+    visit machine_path(dons)
 
+    expect(page).to have_content(snickers.name)
+    expect(page).to have_content(snickers.price)
+    expect(page).to have_content(bbq.name)
+    expect(page).to have_content(bbq.price)
   end
 end
