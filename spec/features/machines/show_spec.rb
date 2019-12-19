@@ -14,9 +14,9 @@ RSpec.describe "as a user" do
 
     expect(page).to have_content(dons.location)
     expect(page).to have_content(snickers.name)
-    expect(page).to have_content(snickers.price)
+    expect(page).to have_content("$1.00")
     expect(page).to have_content(bbq.name)
-    expect(page).to have_content(bbq.price)
+    expect(page).to have_content("$2.00")
   end
 
   it "displays average price for all of the snacks in the machine" do

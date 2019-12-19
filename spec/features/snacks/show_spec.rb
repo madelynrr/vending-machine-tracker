@@ -16,7 +16,7 @@ RSpec.describe "as a user" do
     visit snack_path(snickers)
 
     expect(page).to have_content(snickers.name)
-    expect(page).to have_content("Price: #{snickers.price}")
+    expect(page).to have_content("Price: $1.00")
   end
 
   it "displays list of vending machine locations with that snack" do
