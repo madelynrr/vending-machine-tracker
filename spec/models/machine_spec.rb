@@ -17,11 +17,11 @@ RSpec.describe Machine, type: :model do
       dons  = owner.machines.create(location: "Don's Mixed Drinks")
       snickers = Snack.create(name: "Snickers", price: 1)
       bbq = Snack.create(name: "BBQ Potato Chips", price: 2)
-      mms = Snack.create(name: "M&Ms", price: 1)
+      mms = Snack.create(name: "M&Ms", price: 3)
 
       dons.snacks << [snickers, bbq, mms]
 
-      expect(dons.average_price).to eq(1.33)
+      expect(dons.average_price).to eq(2)
     end
   end
 end
