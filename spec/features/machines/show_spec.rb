@@ -18,4 +18,19 @@ RSpec.describe "as a user" do
     expect(page).to have_content(bbq.name)
     expect(page).to have_content(bbq.price)
   end
+
+  it "displays average price for all of the snacks in the machine" do
+    owner = Owner.create(name: "Sam's Snacks")
+    dons  = owner.machines.create(location: "Don's Mixed Drinks")
+
+    snickers = Snack.create(name: "Snickers", price: 1)
+    bbq = Snack.create(name: "BBQ Potato Chips", price: 2)
+    mms = Snack.create(name: "M&Ms", price: 1)
+
+    dons.snacks << [snickers, bbq, mms]
+
+    visit machine_path(dons)
+
+    expect(page).to have_content("Average Price: 1.33")
+  end
 end
