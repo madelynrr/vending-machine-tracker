@@ -12,6 +12,7 @@ RSpec.describe "as a user" do
 
     visit machine_path(dons)
 
+    expect(page).to have_content(dons.location)
     expect(page).to have_content(snickers.name)
     expect(page).to have_content(snickers.price)
     expect(page).to have_content(bbq.name)
