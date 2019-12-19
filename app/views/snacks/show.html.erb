@@ -1,0 +1,6 @@
+<%= @snack.name %>
+<p>Price: <%= @snack.price %></p>
+<p>Locations:</p>
+<% @snack.machines.each do |machine| %>
+  <%= machine.location %>
+<% end %>
